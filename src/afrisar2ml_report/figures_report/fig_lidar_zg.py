@@ -10,7 +10,7 @@ def fig_lidar_zg(site, band_mask):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get lidar ZG
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     zg = ds["lvis_zg"].values.astype(float)
 
     # load band-specific mask and set invalid pixels to nan

@@ -15,7 +15,7 @@ def fig_data_split(band):
     fig.suptitle(f"Training (blue), validation (orange), test (red) areas, {band}-band")
     for site in site_names:
         print("  working on", site)
-        ds = open_dataset.open_dataset(site)
+        ds = open_dataset.open_dataset(paths.get_dataset_path(site))
         # get masks
         mask_fsar = ds[f"mask_{band.lower()}"].values.astype(bool)
         mask_subregion = ds["mask_subregion"].values.astype(bool)

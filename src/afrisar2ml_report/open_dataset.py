@@ -1,14 +1,16 @@
+from pathlib import Path
+
 import numpy as np
-import rioxarray as rioxarray  # noqa: PLC0414
+import rioxarray as rioxarray  # noqa: PLC0414  (registers the .rio accessor)
 import xarray as xr
+from zarr.storage import ZipStore
 
-from afrisar2ml_report import paths
 
-
-def open_dataset(site):
-    zarr_path = paths.get_dataset_path(site)
-    ds = xr.open_dataset(zarr_path, engine="zarr")
-    return ds
+def open_dataset(path: str | Path) -> xr.Dataset:
+    """Open a site dataset lazily from a zipped Zarr v3 store (or an unzipped .zarr folder)."""
+    path = Path(path)
+    store = path if path.is_dir() else ZipStore(path, mode="r")
+    return xr.open_dataset(store, engine="zarr", consolidated=True)  # type: ignore
 
 
 def get_non_water_rh98(ds):

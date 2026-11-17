@@ -4,7 +4,7 @@ List the primary-secondary pass pairs matching the specified baseline.
 
 import numpy as np
 
-from afrisar2ml_report import metadata, open_dataset, sites
+from afrisar2ml_report import metadata, open_dataset, paths, sites
 
 
 def pass_lists_by_site(site):
@@ -93,7 +93,7 @@ def pass_lists_by_site(site):
 
 def main_baseline_selection(site, band):
     primary, secondary_list = pass_lists_by_site(site)
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     for pass_b in secondary_list:
         pass_ae = primary.encode("ascii")
         pass_be = pass_b.encode("ascii")

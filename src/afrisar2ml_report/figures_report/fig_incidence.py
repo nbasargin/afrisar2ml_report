@@ -10,7 +10,7 @@ def fig_incidence(site, band):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get incidence angle
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     inc = ds[f"incidence_{band.lower()}"].values
 
     # plot

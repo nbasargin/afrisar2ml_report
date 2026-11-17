@@ -19,7 +19,7 @@ def fig_kz_terrain(site, band):
     kz_name = f"kz_{band.lower()}"
 
     # get kz
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     kz = ds[kz_name].sel(pass_a=pass_ae, pass_b=pass_be).values
 
     # correct kz by the terrain

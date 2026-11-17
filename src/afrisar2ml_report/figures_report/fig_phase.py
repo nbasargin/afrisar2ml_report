@@ -17,7 +17,7 @@ def fig_phase(site, band, pol):
     cov_name = f"cov_{band.lower()}"
 
     # get phase from the covariance matrix
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     cov = ds[cov_name].sel(pass_a=pass_ae, pass_b=pass_be, pol_a=pol_a, pol_b=pol_b).values
     phase = np.angle(cov, deg=True)
 

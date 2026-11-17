@@ -18,7 +18,7 @@ def get_metrics(prediction_list, target):
 
 def _create_and_save_table(site, prediction_dict_p, prediction_dict_l, comment, save_to):
     # load lvis
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     target_pt = torch.tensor(open_dataset.get_non_water_rh98(ds))
     # get metrics
     metrics_str = f"% {comment} \n"

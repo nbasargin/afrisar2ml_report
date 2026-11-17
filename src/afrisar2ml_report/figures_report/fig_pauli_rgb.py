@@ -16,7 +16,7 @@ def fig_pauli_rgb(band):
     fig.suptitle(f"Pauli RGB, {band}-band")
     for site in site_names:
         print("  working on", site)
-        ds = open_dataset.open_dataset(site)
+        ds = open_dataset.open_dataset(paths.get_dataset_path(site))
         # use first pass for preview
         pass_a, _pass_b = config_report.get_pass_pair(site)
         name_ascii = pass_a.encode("ascii")

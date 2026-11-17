@@ -9,7 +9,7 @@ def fig_dem(site, band):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get slant range DEM
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     dem_name = f"slantdem_{band.lower()}"
     dem = ds[dem_name].values
 

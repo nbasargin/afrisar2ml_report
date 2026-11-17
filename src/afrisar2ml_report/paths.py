@@ -16,7 +16,7 @@ def get_project_folder():
 
 
 def get_dataset_path(site):
-    zarr_path = get_project_folder() / "dataset" / f"AfriSAR-2-ML_{site}_v{config.DS_VERSION}"
+    zarr_path = get_project_folder() / "dataset" / f"AfriSAR-2-ML_{site}_v{config.DS_VERSION}.zarr.zip"
     return zarr_path
 
 

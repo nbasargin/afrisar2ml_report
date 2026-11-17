@@ -17,7 +17,7 @@ def fig_power(site, band, pol):
     cov_name = f"cov_{band.lower()}"
 
     # get covariance matrix
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     cov = ds[cov_name].sel(pass_a=name_ascii, pass_b=name_ascii, pol_a=pol_ascii, pol_b=pol_ascii).values
 
     # calculate power in dB

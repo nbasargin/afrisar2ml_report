@@ -10,7 +10,7 @@ def fig_lidar_rh98(site, band_mask):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get lidar RH98
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     rh98 = ds["lvis_rh98"].values.astype(float)
 
     # load band-specific mask and set invalid pixels to nan

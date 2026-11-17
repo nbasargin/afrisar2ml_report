@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-from afrisar2ml_report import config, open_dataset
+from afrisar2ml_report import config, open_dataset, paths
 
 
 def split_data_into_train_val_test(height_dict, band):
@@ -18,7 +18,7 @@ def split_data_into_train_val_test(height_dict, band):
     val_trg_list = []
     for site in config.TRAIN_VAL_SITES:
         predictions = height_dict[site]
-        ds = open_dataset.open_dataset(site)
+        ds = open_dataset.open_dataset(paths.get_dataset_path(site))
         rh98 = open_dataset.get_non_water_rh98(ds)
         mask_fsar = ds[f"mask_{band.lower()}"].values.astype(np.bool)
         mask_subregion = ds["mask_subregion"].values.astype(np.bool)
@@ -37,7 +37,7 @@ def split_data_into_train_val_test(height_dict, band):
 
     # test area, another independent full site
     test_pred_all = height_dict[config.TEST_SITE]
-    ds_test = open_dataset.open_dataset(config.TEST_SITE)
+    ds_test = open_dataset.open_dataset(paths.get_dataset_path(config.TEST_SITE))
     rh98_test = open_dataset.get_non_water_rh98(ds_test)
     mask_fsar_test = ds_test[f"mask_{band.lower()}"].values.astype(np.bool)
     mask_lvis_test = np.isfinite(rh98_test)

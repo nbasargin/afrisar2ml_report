@@ -3,7 +3,7 @@ from afrisar2ml_report import metadata, open_dataset, paths, sites
 
 def tab_baselines(site, band):
     print("tab_baselines", site, band)
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     pass_names = ds.attrs["pass_names"]
 
     h_bl_str = r"B_{hor}"

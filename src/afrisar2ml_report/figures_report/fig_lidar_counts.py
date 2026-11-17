@@ -10,7 +10,7 @@ def fig_lidar_counts(site, band_mask):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get lidar counts (shots per pixel)
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     counts = ds["lvis_counts"].values.astype(float)
 
     # load band-specific mask and set invalid pixels to nan

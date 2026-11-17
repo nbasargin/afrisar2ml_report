@@ -33,7 +33,7 @@ def fig_rvog_hists_by_site(band, site_pass_dict):
     # plot histograms
     for i, (site, (pass_a, pass_b)) in enumerate(site_pass_dict.items()):
         rvog_height = benchmark_rvog.load_rvog_height(site, band, pass_a, pass_b)
-        ds = open_dataset.open_dataset(site)
+        ds = open_dataset.open_dataset(paths.get_dataset_path(site))
         rh98 = open_dataset.get_non_water_rh98(ds)
         ax = axs[0, i]
         hb = hist_metrics.plot_hist_with_metrics_into_axis(ax, torch.tensor(rh98), torch.tensor(rvog_height), norm)

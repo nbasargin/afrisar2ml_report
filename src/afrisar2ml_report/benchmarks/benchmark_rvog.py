@@ -49,7 +49,7 @@ def cache_rvog_height(site, band, pass_a, pass_b):
     print(f"Caching RVoG canopy height for {site}, {band}, {pass_a} - {pass_b}")
 
     # load data
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     pass_ae = pass_a.encode("ascii")
     pass_be = pass_b.encode("ascii")
     ds_cov = ds[f"cov_{band.lower()}"]

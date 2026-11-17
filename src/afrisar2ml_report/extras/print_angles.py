@@ -1,10 +1,10 @@
 import numpy as np
 
-from afrisar2ml_report import open_dataset, sites
+from afrisar2ml_report import open_dataset, paths, sites
 
 
 def print_min_max_offnadir(site, variable):
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     offnadir = ds[variable].values
     offnadir_min = np.rad2deg(np.nanmin(offnadir))
     offnadir_mean = np.rad2deg(np.nanmean(offnadir))

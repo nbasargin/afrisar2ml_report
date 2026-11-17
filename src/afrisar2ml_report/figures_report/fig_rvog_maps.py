@@ -26,7 +26,7 @@ def fig_rvog_maps(site):
     print("fig_rvog_maps", site)
     mpl_styles.setup_matplotlib_report_figure_styles()
     # lvis
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     target_np = open_dataset.get_non_water_rh98(ds)
     water_pixels = ds["worldcover"].values == 80
     # figure

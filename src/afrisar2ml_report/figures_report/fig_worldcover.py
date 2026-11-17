@@ -11,7 +11,7 @@ def fig_worldcover(site, band_mask):
     cmap, norm, class_values, class_names = esa_worldcover_cmap.get_worldcover_cmap_and_norm()
 
     # get worldcover map
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     worldcover = ds["worldcover"].values.astype(np.float32)
 
     # load band-specific mask and set invalid pixels to nan

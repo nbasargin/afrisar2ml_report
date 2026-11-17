@@ -10,7 +10,7 @@ def tab_extent():
     extent_str += " & \\textbf{Northing bounds (m)} & \\textbf{Easting bounds (m)}  \\\\ \n"
     extent_str += "\\hline \n"
     for site in [sites.LOPE, sites.MABOUNIE, sites.MITZIC, sites.MONDAH, sites.PONGARA]:
-        ds = open_dataset.open_dataset(site)
+        ds = open_dataset.open_dataset(paths.get_dataset_path(site))
         crs = ds.rio.crs
         min_east, min_north, max_east, max_north = ds.rio.bounds()
         height = ds.rio.height  # number of rows / pixels in Y

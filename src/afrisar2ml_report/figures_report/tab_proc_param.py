@@ -2,7 +2,7 @@ from afrisar2ml_report import open_dataset, paths, sites
 
 
 def tab_proc_param(site):
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     primary_name = ds.attrs["primary_pass_name"]
     details_l = ds.attrs["processing_details_l"]
     details_p = ds.attrs["processing_details_p"]

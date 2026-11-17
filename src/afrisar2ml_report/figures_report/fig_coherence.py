@@ -17,7 +17,7 @@ def fig_coherence(site, band, pol):
     cov_name = f"cov_{band.lower()}"
 
     # get covariance matrices
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     cov_ab = ds[cov_name].sel(pass_a=pass_ae, pass_b=pass_be, pol_a=pol_a, pol_b=pol_b).values
     cov_aa = ds[cov_name].sel(pass_a=pass_ae, pass_b=pass_ae, pol_a=pol_a, pol_b=pol_a).values
     cov_bb = ds[cov_name].sel(pass_a=pass_be, pass_b=pass_be, pol_a=pol_b, pol_b=pol_b).values

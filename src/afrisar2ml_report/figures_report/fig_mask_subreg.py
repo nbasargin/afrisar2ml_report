@@ -11,7 +11,7 @@ def fig_mask_subreg(site, band):
     inside_color, outside_color = colors.get_subregion_colors()
 
     # get masks
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     mask_fsar = ds[f"mask_{band.lower()}"].values.astype(bool)
     mask_subregion = ds["mask_subregion"].values.astype(bool)
     inside = mask_fsar & mask_subregion

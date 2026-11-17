@@ -10,7 +10,7 @@ def fig_offnadir(site, band):
     mpl_styles.setup_matplotlib_report_figure_styles()
 
     # get off-nadir angle
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     offnadir = ds[f"offnadir_{band.lower()}"].values
 
     # plot

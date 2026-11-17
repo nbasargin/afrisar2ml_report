@@ -1,10 +1,10 @@
 import numpy as np
 
-from afrisar2ml_report import open_dataset, sites
+from afrisar2ml_report import open_dataset, paths, sites
 
 
 def print_min_max_dem(site):
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     dem = ds["slantdem_l"].values
     print(f"{site:8}  min = {np.nanmin(dem):.0f},  mean = {np.nanmean(dem):.0f},  max = {np.nanmax(dem):.0f}")
 

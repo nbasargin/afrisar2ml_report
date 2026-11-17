@@ -3,7 +3,7 @@ import torch
 from torch import Tensor
 from torch.utils.data import Dataset
 
-from afrisar2ml_report import open_dataset
+from afrisar2ml_report import open_dataset, paths
 
 
 class TSNNDataset(Dataset):
@@ -56,7 +56,7 @@ def repeat_tensor_tracks(small_tensor: np.ndarray, n_tracks: int):
 
 def load_tsnn_site_data(site, band, n_tracks: int | None):
     print(f"load_tsnn_data, {site}, {band}-band")
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     cov: np.ndarray = ds[f"cov_{band.lower()}"].values
     rh98 = ds["lvis_rh98"].values
     mask_subregion = ds["mask_subregion"].values.astype(np.bool)

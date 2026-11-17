@@ -3,7 +3,7 @@ from afrisar2ml_report import metadata, open_dataset, paths, sites
 
 def tab_passes(site, band):
     print("tab_passes", site, band)
-    ds = open_dataset.open_dataset(site)
+    ds = open_dataset.open_dataset(paths.get_dataset_path(site))
     pass_names = ds.attrs["pass_names"]
     date = metadata.get_pass_start_time(ds, pass_names[0], band).date()
     passes_str = f"% tab_passes, {site}, {band} band, acquired on {date} \n"
