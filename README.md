@@ -17,3 +17,13 @@ This repository contains the python `afrisar2ml_report` package that accompanies
 - check config in `src/afrisar2ml_report/config.py`
 - optionally, adjust device (CPU / GPU) in `src/afrisar2ml_report/hardware.py`
 - run the benchmarks and generate report figures with `python -m afrisar2ml_report`
+
+
+## Changelog
+
+### v1.0.0
+- initial release
+
+### v1.1.0
+- the dataset is now distributed as a ZipStore
+- update data loader
